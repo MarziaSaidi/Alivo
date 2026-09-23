@@ -55,11 +55,6 @@
   text-transform: uppercase;
   font-weight: 600;
 }
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
 .clock {
   font-size: 12px;
   color: var(--ink-faint);

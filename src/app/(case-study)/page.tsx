@@ -68,12 +68,6 @@ export default function CaseStudyPage() {
 
       <header className={s.header}>
         <span className={s.mark}>Marzia Saidi</span>
-        <div className={s.headerRight}>
-          <Link className={s.cta} href="/mission-control">
-            Try Mission Control
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
       </header>
 
       {/* ── INTRO — what, why, proof, in one viewport ──────────────────── */}
@@ -139,11 +133,6 @@ export default function CaseStudyPage() {
                 Working responsive prototype. Ten routes, real state, no backend.
               </p>
             </div>
-
-            <Link className={s.cta} href="/mission-control">
-              Try Mission Control
-              <span aria-hidden="true">→</span>
-            </Link>
           </aside>
 
           {/* ── CONTENT ─────────────────────────────────────────────── */}
@@ -578,12 +567,6 @@ export default function CaseStudyPage() {
                   Designing those stopping points — making them legible in the interface
                   and enforceable in the code — turned out to be the whole project.
                 </p>
-                <div className={s.introActions}>
-                  <Link className={s.cta} href="/mission-control">
-                    Try Mission Control
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
               </div>
             </section>
           </div>
@@ -607,10 +590,6 @@ export default function CaseStudyPage() {
 
       <footer className={s.footer}>
         <span>Alivo Mission Control — independent concept, 2026</span>
-        <Link className={s.cta} href="/mission-control">
-          Try Mission Control
-          <span aria-hidden="true">→</span>
-        </Link>
       </footer>
     </div>
   );
