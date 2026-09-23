@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * ALIVO MISSION CONTROL — design tokens
+ *
+ * Values are quoted from the approved system and are not invented here:
+ *   docs/color-system.md      §20 canonical table
+ *   docs/typography-system.md §17 canonical table
+ *   docs/layout-system.md     §21 geometry tokens
+ * ------------------------------------------------------------------ */
+
+@theme {
+  /* ---- breakpoints -------------------------------------------------
+     Rail and inspection layer move beside their content at 1360 and
+     above. Below that they stack or overlay. (layout §18)            */
+  --breakpoint-split: 1360px;
+  --breakpoint-wide: 1600px;
+
+  /* ---- type --------------------------------------------------------
+     Inter only. Montserrat is marketing, not product. (typography §2) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* ---- surface ---- */
+  --color-canvas: #fcfcfd;
+  --color-surface-input: #ffffff;
+  --color-surface-subtle: #f4f5f7;
+  --color-surface-hover: #f1f2f5;
+  --color-surface-selected: #eef2fe;
+
+  /* ---- text ---- */
+  --color-text-primary: #14161a;
+  --color-text-secondary: #4a525e;
+  --color-text-tertiary: #5c6673;
+  --color-text-disabled: #9aa2ae;
+  --color-text-inverse: #ffffff;
+  --color-text-interactive: #1d4fd8;
+  --color-text-failure: #a3301f;
+
+  /* ---- border ---- */
+  --color-border-quiet: #edeef1;
+  --color-border-default: #e3e5ea;
+  --color-border-strong: #c9cdd6;
+  --color-border-input: #d3d7df;
+  --color-border-focus: #2563ff;
+  --color-border-failure: #e8c4bc;
+
+  /* ---- action ---- */
+  --color-action-primary: #2563ff;
+  --color-action-primary-hover: #1e52e0;
+  --color-action-primary-pressed: #173fb0;
+
+  /* ---- state ----
+     state.failure.surface (#FDF3F1) is reserved and intentionally unused:
+     failure interruptions carry no tinted background in this build.     */
+  --color-state-failure: #a3301f;
+
+  /* ---- elevation (layout §14) ----
+     One shadow. Overlays only — never for grouping or emphasis. */
+  --shadow-overlay: -8px 0 24px -12px rgb(20 22 26 / 0.12);
+
+  /* ---- radius (layout §12) ---- */
+  --radius-control: 6px;
+  --radius-interruption: 8px;
+  --radius-selection: 4px;
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Money, times and counts align digit-to-digit everywhere they appear.
+   `case` keeps $ and % optically correct beside uppercase labels. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "case" 1;
+}
+
+/* Focus ring always sits OUTSIDE the control: inset on a blue fill it
+   computes to 1:1. (color §16) */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
+}
+
+/* No state is communicated by motion alone, so removing it loses nothing. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
